@@ -26,7 +26,7 @@ def identity_function(x):
 #损失函数
 #均方误差,y为预测值,t为真实值,一般用于回归问题,对异常值敏感容易梯度爆炸
 def mean_squared_error(y, t):
-    return np.sum((y - t)**2) * 0.5
+    return np.sum((y - t)**2) * 0.5   
 
 
 
