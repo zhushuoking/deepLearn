@@ -32,8 +32,15 @@ def mean_squared_error(y, t):
 
 #交叉熵误差,y为预测值,t为真实值,一般用于分类问题,对异常值不敏感不容易梯度爆炸
 def cross_entropy_error(y, t):
-    delta = 1e-7
-    return -np.sum(t * np.log(y + delta))
+    #将y转化为二维
+    if y.ndim == 1:
+        t = t.reshape(1, t.size)
+        y = y.reshape(1, y.size)
+    #将t转换为顺序编码(对应的类别标签)
+    if t.size == y.size:
+        t = t.argmax(axis=1)
+    return -np.sum(np.log(y[np.arange(t.size), t] + 1e-7)) / t.size
+
 
 
 
