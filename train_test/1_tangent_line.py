@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from common.griadent import numerical_diff
+from common.gradient import numerical_diff
 
 
 #函数定义
@@ -20,10 +20,11 @@ def tangent_line(f, x):
 
 #定义数据画图
 x = np.arange(0.0, 20.0, 0.1)#生成0.0到20.0的数组，步长为0.1
-y = f(x)
+y = f(x)#要求曲线
 f_line = tangent_line(f, 5)
-plt.plot(x, y, label='f(x)')
 y_line = f_line(x)
+
+plt.plot(x, y, label='f(x)')
 plt.plot(x, y_line, label='tangent line')
 
 plt.show()
